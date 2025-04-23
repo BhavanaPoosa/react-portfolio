@@ -1,0 +1,398 @@
+
+.developer-page {
+    padding: 2rem;
+    color: #fff;
+    background: #121212;
+    min-height: 100vh;
+  }
+  
+  .intro h1 {
+    font-size: 2.5rem;
+    color: #1db954;
+  }
+  
+  .intro p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+  }
+  
+  .skills h2::before {
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url('/icons/brain.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+  
+  .projects h2::before {
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url('/icons/rocket.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+  
+  .resume h2::before {
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url('/icons/document.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+  
+  .skills h2,
+  .projects h2,
+  .resume h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin: 2rem 0 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .skill-tag {
+    background: #1e1e1e;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: #1db954;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  .skill-tag:hover {
+    background: #2c2c2c;
+  }
+  
+  .project-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .project-card {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.6s ease forwards;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .project-card h3 {
+    color: #1db954;
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-card p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .tech-used span {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    margin-right: 0.4rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+  }
+  
+  .project-card a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #1db954;
+    text-decoration: none;
+  }
+  
+  .resume {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  .resume a {
+    color: #1db954;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1.1rem;
+  }
+  
+  .resume a:hover {
+    text-decoration: none;
+  }
+  
+  @keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+ /* Developer.css */
+.timeline {
+  margin: 40px 0;
+}
+
+.vertical-timeline-element-title {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.vertical-timeline-element-subtitle {
+  font-size: 1em;
+  margin: 0;
+}
+.certifications {
+  padding: 2rem;
+}
+
+.certifications h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.certification-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.certification-card {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.certification-card:hover {
+  transform: translateY(-5px);
+}
+
+.certification-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.certification-card p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.certification-card a {
+  color: #1DB954;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.certification-card a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .certifications h2 {
+    font-size: 1.5rem;
+  }
+
+  .certification-card {
+    padding: 1rem;
+  }
+
+  .certification-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .certification-card p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Experience Section */
+.experience {
+  padding: 50px 20px;
+}
+
+.experience h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.experience-card {
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.experience-card h3 {
+  font-size: 1.5rem;
+  color: #1DB954; /* Highlight color */
+  margin-bottom: 10px;
+}
+
+.experience-card h4 {
+  font-size: 1.2rem;
+  color: #cecccc;
+  margin-bottom: 20px;
+}
+
+.experience-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.experience-card ul li {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.experience-card ul li strong {
+  color: #1DB954; /* Highlighting key actions */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .experience h2 {
+    font-size: 1.5rem;
+  }
+
+  .experience-card {
+    padding: 20px;
+  }
+
+  .experience-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .experience-card h4 {
+    font-size: 1rem;
+  }
+}
+
+/* avatar */
+.intro{                               /* flex row for photo + text  */
+  display:flex;
+  align-items:center;
+  gap:28px;
+  flex-wrap:wrap;                    /* stacks vertically on phones */
+  margin-bottom:2rem;
+}
+
+/* keep heading colour rule you already had */
+.intro h1{ font-size:2.5rem; color:#1DB954; }
+
+/* Avatar container (you already had most of this) */
+.intro-photo{
+  position:relative;
+  width:128px; height:128px;
+  flex-shrink:0;
+}
+
+/* ► circular image, grayscale → colour on hover */
+.intro-photo img{
+  width:100%; height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  filter:grayscale(100%) brightness(0.9) contrast(1.05);
+  transition:filter .4s ease, transform .35s ease;
+  border:3px solid transparent;
+}
+.intro-photo:hover img{
+  filter:grayscale(0%) brightness(1) contrast(1);
+  box-shadow:0 0 12px rgba(29,185,84,.65),
+             0 0 24px rgba(29,185,84,.35);
+  border-color:#1DB954;
+  transform:scale(1.03);
+}
+
+/* Soft halo behind the avatar */
+.intro-photo::before{
+  content:'';
+  position:absolute; inset:0;
+  border-radius:50%;
+  background:radial-gradient(rgba(29,185,84,.25),transparent 70%);
+  transform:scale(1.4);
+  opacity:.35;
+  pointer-events:none;
+}
+
+/* ► HOVER CAPTION (hidden until hover/focus) */
+.hover-info{
+  position:absolute;
+  top:50%;
+  left:110%;                        /* sits to the right of photo */
+  transform:translateY(-50%);
+  background:#1e1e1e;
+  color:#fff;
+  padding:6px 10px;
+  border-radius:8px;
+  font-size:.75rem;
+  line-height:1.2;
+  white-space:nowrap;
+  opacity:0;
+  pointer-events:none;
+  border:1px solid #1DB954;
+  box-shadow:0 0 10px rgba(0,0,0,.4);
+  transition:opacity .25s ease;
+}
+.intro-photo:hover .hover-info,
+.intro-photo:focus-within .hover-info{
+  opacity:1;
+}
+
+/* ► Mobile tweak – drop caption below photo */
+@media (max-width:600px){
+  .hover-info{
+    left:50%;
+    top:110%;
+    transform:translate(-50%,0);
+  }
+  .intro{                          /* centre align content on small screens */
+    justify-content:center;
+    text-align:center;
+  }
+}
+
+/* intro‑text column (only width tweak) */
+.intro-text{ flex:1 1 260px; min-width:0; }

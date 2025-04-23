@@ -1,0 +1,16 @@
+.my-journey-page {
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  .my-journey-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .my-journey-header h1 {
+    color: #1DB954;
+  }
+  

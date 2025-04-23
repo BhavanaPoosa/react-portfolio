@@ -1,0 +1,73 @@
+.home-container {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #fff;
+  }
+  .home-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #1db954;
+  }
+  .home-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ccc;
+  }
+  .home-options {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .home-card {
+    background: #1e1e1e;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    width: 200px;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  .home-card:hover,
+  .home-card.active {
+    transform: scale(1.05);
+    background: #282828;
+  }
+  .preview-box {
+    background: #181818;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #ddd;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .home-hero {
+    background: url('/Sky2.gif') center center / cover no-repeat;
+    position: relative;
+    padding: 6rem 2rem;
+    text-align: center;
+    color: white;
+    z-index: 1;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  
+  .home-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* dark overlay for text readability */
+    z-index: -1;
+  }
+  
+  
+  

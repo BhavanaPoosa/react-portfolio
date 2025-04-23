@@ -1,0 +1,229 @@
+/* Artist Page Base Styles */
+.artist-page {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  font-family: 'Helvetica Neue', sans-serif;
+  cursor: url('/cursor.cur'),auto;
+}
+
+.artist-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.artist-header h1 {
+  color: #1DB954;
+  font-size: 2.8em;
+  margin-bottom: 10px;
+}
+
+.artist-header p {
+  font-size: 1.2em;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.artist-gallery {
+  margin-bottom: 40px;
+}
+
+.artist-gallery h2 {
+  color: #1DB954;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.art-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.art-card {
+  border: 2px solid #1DB954;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: url('/curscor.cur'), auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.art-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.5);
+}
+
+.art-thumbnail {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.artist-info {
+  background-color: #121212;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.artist-info h2 {
+  color: #1DB954;
+  margin-bottom: 10px;
+}
+
+.artist-info p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  border: 5px solid #1DB954;
+  box-shadow: 0 0 20px rgba(29, 185, 84, 0.6);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #121212;
+  padding: 10px;
+}
+
+.modal-image {
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+}
+
+/* Arrow Navigation Buttons */
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1001;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-prev {
+  left: -50px;  /* Moved further left outside the modal */
+}
+
+.modal-next {
+  right: -50px; /* Moved further right outside the modal */
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 2em;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1001;
+}
+/* Social Section Styling */
+.artist-social {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #121212;
+  border-radius: 12px;
+}
+
+.artist-social h2 {
+  color: #1DB954;
+  margin-bottom: 10px;
+}
+
+/* Container for GIF and handle */
+.insta-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wrapper for GIF and overlay text */
+.insta-gif-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* GIF image */
+.insta-gif {
+  width: 500px; /* Adjust size as needed */
+  height: auto;
+  display: block;
+  shape-margin: 1cm;
+  
+}
+
+/* Overlay text on the GIF */
+.insta-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+/* Instagram handle link */
+.insta-link {
+  color: #1DB954;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.insta-link:hover {
+  color: #17a44d;
+}
+.collab-prompt {
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: #c6c6c6; /* Spotify green accent */
+  font-weight: bold;
+}
+
+
+
+
+
