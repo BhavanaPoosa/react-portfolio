@@ -39,16 +39,16 @@ export default function HomeContent() {
         </h2>
         <div className="featured-tiles">
           <div className="tile">
-            <h4>Latest Project</h4>
-            <p>Capsweb Migration</p>
+            <h4>Cloud Migration</h4>
+            <p>Contributed to legacy-to-cloud platform shift.</p>
           </div>
           <div className="tile">
-            <h4>Recent Artwork</h4>
-            <p>"Whiskers & Wonder" — A Cat Portrait</p>
+            <h4>New Credential</h4>
+            <p><strong>Oracle GenAI Certified</strong> - Skilled in Large Language Models (LLMs), using OCI's Generative AI services, and building RAG-based chatbots.</p>
           </div>
           <div className="tile">
-            <h4>Vision</h4>
-            <p>Run a 10K. Master Framer Motion. Inspire someone.</p>
+            <h4>Art Club Recognition</h4>
+            <p>Runner-up in Aakarshan Art Challenge.</p>
           </div>
         </div>
       </section>

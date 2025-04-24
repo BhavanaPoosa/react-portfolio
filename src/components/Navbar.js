@@ -1,108 +1,98 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { FaSpotify, FaSearch, FaBell } from 'react-icons/fa';
+// src/components/Navbar.js
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { FaHome, FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 
-/* ───────── SEARCH ITEMS (replace your old array) ───────── */
+/* ───────── SEARCH CATALOG ───────── */
 const searchItems = [
-  /* main site pages */
-  { type: 'page',    label: 'Developer',        path: '/developer' },
-  { type: 'page',    label: 'Artist',           path: '/artist' },
-  { type: 'page',    label: 'Individual',       path: '/individual' },
+  /* pages */
+  { type: 'page',    label: 'Developer',  path: '/developer' },
+  { type: 'page',    label: 'Artist',     path: '/artist' },
+  { type: 'page',    label: 'Individual', path: '/individual' },
 
-  /* misc content */
-  { type: 'project', label: 'React Portfolio',  path: '/developer' },
-  { type: 'goal',    label: '2025 Vision Board',path: '/individual' },
+  /* misc */
+  { type: 'project', label: 'React Portfolio',        path: '/developer' },
+  { type: 'goal',    label: '2025 Vision Board',      path: '/individual' },
+  { type: 'resume',  label: 'Download Résumé',        path: '/resume.pdf' },
+  { type: 'page',    label: 'My Journey Timeline',    path: '/myjourney' },
 
-  /* résumé & timeline */
-  { type: 'resume',  label: 'Download Résumé',      path: '/resume.pdf' },  // opens PDF
-  { type: 'page',    label: 'My Journey Timeline',  path: '/myjourney' },
+  { type: 'project', label: 'Text2Vision',            path: '/developer' },
+  { type: 'project', label: 'Portfolio Site',         path: '/developer' },
 
-  { type: 'project', label: 'Text2Vision',    path: '/developer' },
-  { type: 'project', label: 'Portfolio Site',       path: '/developer' },
-
-  /* artworks (route back to Artist page) */
-  { type: 'art', label: 'Autumn – Digital Art',               path: '/artist' },
-  { type: 'art', label: 'Forest Hut – Digital Art',           path: '/artist' },
-  { type: 'art', label: 'Forest – Sketch',                    path: '/artist' },
-  { type: 'art', label: 'Cave – Sketch',                      path: '/artist' },
-  { type: 'art', label: 'Webtoon – Painting',                 path: '/artist' },
-  { type: 'art', label: 'Animated Scene – Digital Art',       path: '/artist' },
-  { type: 'art', label: 'Fairy Cartoon – Animation',          path: '/artist' },
-  { type: 'art', label: 'Cat in Room – Sketch',               path: '/artist' },
-  { type: 'art', label: 'Greeting Card',                      path: '/artist' },
-  { type: 'art', label: 'Elf – Sketch',                       path: '/artist' },
-  { type: 'art', label: 'Harry – Digital Art',                path: '/artist' },
-  { type: 'art', label: 'Levi – Digital Art',                 path: '/artist' },
-  { type: 'art', label: 'Nezuko – Sketch',                    path: '/artist' },
-  { type: 'art', label: 'Peas in Pod – Card',                 path: '/artist' },
-  { type: 'art', label: 'Mini Photo Booth – Craft',           path: '/artist' },
-  { type: 'art', label: 'Dragon Booth – Craft',               path: '/artist' },
-  { type: 'art', label: 'Mini Art – Paint',                   path: '/artist' },
-  { type: 'art', label: 'Teddy – Sketch',                     path: '/artist' },
-  { type: 'art', label: 'Sketch – Portrait 1',                path: '/artist' },
-  { type: 'art', label: 'Sketch – Portrait 2',                path: '/artist' },
-  { type: 'art', label: 'Sketch – Portrait 3',                path: '/artist' },
-  { type: 'art', label: 'Sketch – Portrait 4',                path: '/artist' },
+  /* artwork */
+  { type: 'art', label: 'Autumn – Digital Art',       path: '/artist' },
+  { type: 'art', label: 'Forest Hut – Digital Art',   path: '/artist' },
+  // … (keep the rest of your art items here)
 ];
 
-
 export default function Navbar() {
-  const [showProfile, setShowProfile] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isMusicOn, setIsMusicOn] = useState(false);
-  const audioRef = useRef(new Audio('/Chill.mp3'));
   const navigate = useNavigate();
 
-  // Set the audio volume to a lower level (e.g., 0.1 for quieter sound)
+  /* — state — */
+  const [showProfile, setShowProfile] = useState(false);
+  const [searchTerm,  setSearchTerm]  = useState('');
+  const [isMusicOn,   setIsMusicOn]   = useState(false);
+
+  /* background music */
+  const audioRef = useRef(null);
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = 0.1;
-    }
+    audioRef.current = new Audio('/Chill.mp3');
+    audioRef.current.volume = 0.1;
   }, []);
 
-  /* replace the old filteredItems const */
-const filteredItems = searchTerm
-? searchItems.filter(item => {
-    const term = searchTerm.toLowerCase();
-    return (
-      item.label.toLowerCase().includes(term) ||               // match label
-      item.type.toLowerCase().includes(term)  ||               // match "project", "tech", etc.
-      (item.keywords && item.keywords.some(k => k.includes(term))) // optional keywords
+  /* performant live-search */
+  const filteredItems = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return [];
+    return searchItems.filter(i =>
+      i.label.toLowerCase().includes(term) ||
+      i.type.toLowerCase().includes(term)
     );
-  })
-: [];
+  }, [searchTerm]);
 
-
-  const handleScrollToAboutMe = () => {
-    // Navigate to the home page and set the state flag:
-    navigate('/', { state: { scrollToAbout: true } });
+  /* handlers */
+  const handleResultClick = (item) => {
+    if (item.path.endsWith('.pdf')) {
+      window.open(item.path, '_blank', 'noopener,noreferrer');
+    } else {
+      navigate(item.path);
+    }
+    setSearchTerm('');
   };
 
   const toggleMusic = () => {
-    if (isMusicOn) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsMusicOn(!isMusicOn);
+    if (!audioRef.current) return;
+    isMusicOn ? audioRef.current.pause()
+              : audioRef.current.play().catch(()=>{});
+    setIsMusicOn(p => !p);
   };
 
+  /* scroll to About-Me (HomeContent) */
+  const goToAboutMe = () => {
+    navigate('/', { state: { scrollToAbout: true } });
+  };
+
+  /* ───────── JSX ───────── */
   return (
     <>
       <header className="navbar">
-        <div className="nav-left">
-          <FaSpotify size={28} />
-          <div className="nav-home"><a href="/">Home</a></div>
+        {/* left */}
+        <div className="nav-left" onClick={() => navigate('/')}>
+          <FaHome size={24} />
+          <span className="nav-home"></span>
         </div>
+
+        {/* center — search */}
         <div className="nav-center">
-          <FaSearch />
+          <FaSearch className="search-icon" />
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search…"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+
           {searchTerm && (
             <div className="search-dropdown">
               {filteredItems.length ? (
@@ -110,12 +100,10 @@ const filteredItems = searchTerm
                   <div
                     key={idx}
                     className="dropdown-item"
-                    onClick={() => {
-                      navigate(item.path);
-                      setSearchTerm('');
-                    }}
+                    onClick={() => handleResultClick(item)}
                   >
-                    {item.label} <span className="dropdown-tag">{item.type}</span>
+                    {item.label}
+                    <span className="dropdown-tag">{item.type}</span>
                   </div>
                 ))
               ) : (
@@ -124,26 +112,33 @@ const filteredItems = searchTerm
             </div>
           )}
         </div>
+
+        {/* right */}
         <div className="nav-right">
-          <button onClick={toggleMusic} className="music-toggle">
-            {isMusicOn ? 'Music On' : 'Music Off'}
-          </button>
-          <button onClick={handleScrollToAboutMe} className="about-me-btn">
+          <button className="about-me-btn" onClick={goToAboutMe}>
             About Me
           </button>
-          <FaBell size={20} />
+
+          <button className="music-toggle" onClick={toggleMusic}>
+            {isMusicOn ? 'Music On' : 'Music Off'}
+          </button>
+
           <img
             src="/Me.jpeg"
-            alt="Profile"
+            alt="Bhavana Poosa avatar"
             className="avatar"
             onClick={() => setShowProfile(true)}
           />
         </div>
       </header>
 
+      {/* profile modal */}
       {showProfile && (
         <div className="profile-modal" onClick={() => setShowProfile(false)}>
-          <div className="profile-modal-content" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="profile-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
             <img src="/Me.jpeg" alt="Bhavana Poosa" />
           </div>
         </div>
