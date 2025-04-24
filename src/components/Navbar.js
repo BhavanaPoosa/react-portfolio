@@ -79,7 +79,7 @@ export default function Navbar() {
       <header className="navbar">
         {/* left */}
         <div className="nav-left" onClick={() => navigate('/')}>
-          <FaHome size={24} />
+          <FaHome size={24} />{"    "} Home
           <span className="nav-home"></span>
         </div>
 
