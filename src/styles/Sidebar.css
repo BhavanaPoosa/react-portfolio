@@ -99,6 +99,7 @@
   
     .burger-btn {
       display: flex;
+      position: fixed;
       top: 12px;
       left: 12px;
       width: 42px;
