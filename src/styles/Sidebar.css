@@ -102,15 +102,13 @@
       position: fixed;
       top: 12px;
       left: 12px;
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
       background: #1DB954;
       border: none;
-      border-radius: 50%;
+      border-radius: 8px;
       justify-content: center;
       align-items: center;
-      font-size: 2rem;        /* base size for icon */
-      color: #fff !important;
       z-index: 1000;
       transition: transform 0.2s ease;
     }
@@ -118,12 +116,17 @@
       transform: scale(1.1);
     }
   
-    /* force the SVG inside to fill more of that circle */
+    /* ensure your FaBars / FaTimes SVG shows up in white */
     .burger-btn svg {
-      width: 1.2em !important;
-      height: 1.2em !important;
+      width: 24px !important;
+      height: 24px !important;
+      fill: #fff !important;
     }
   
+    /* push the Home label/content rightward so they don’t overlap */
+    .navbar, .sidebar.open ~ .navbar {
+      padding-left: 72px;  /* > burger-btn width + some gutter */
+    }
     
   
     .sidebar .close-btn {
