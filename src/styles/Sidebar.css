@@ -102,20 +102,23 @@
       position: fixed;
       top: 12px;
       left: 12px;
-      width: 42px;
-      height: 42px;
-      font-size: 1.2rem; /* Increased icon size */
-      border: none;
-      border-radius: 50%;
+      width: 44px;
+      height: 44px;
       background: #1DB954;
       color: #000;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 50%;
       justify-content: center;
       align-items: center;
       z-index: 1000;
       transition: transform 0.2s ease;
     }
     
-    .burger-btn:hover { transform: scale(1.05); }
+    .burger-btn:hover {
+      transform: scale(1.05);
+    }
+    
   
     .sidebar .close-btn {
       display: block;

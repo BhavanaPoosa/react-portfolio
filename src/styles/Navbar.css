@@ -177,6 +177,7 @@
       flex-wrap: wrap;
       height: auto;
       padding: 8px 14px;
+      padding-left: 60px;
     }
   
     .nav-left,
