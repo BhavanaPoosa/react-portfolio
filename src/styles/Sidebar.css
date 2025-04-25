@@ -99,12 +99,11 @@
   
     .burger-btn {
       display: flex;
-      position: fixed;
       top: 12px;
       left: 12px;
       width: 42px;
       height: 42px;
-      font-size: 1.4rem; /* Increased icon size */
+      font-size: 1.2rem; /* Increased icon size */
       border: none;
       border-radius: 50%;
       background: #1DB954;
