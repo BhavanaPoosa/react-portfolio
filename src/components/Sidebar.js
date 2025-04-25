@@ -53,7 +53,7 @@ export default function Sidebar() {
   return (
     <>
       <button className="burger-btn" onClick={toggleDrawer} aria-label="Open menu">
-        <FaBars size={26} color='#000000'/>
+        <FaBars size={26} color='#fff'/>
       </button>
       <aside className={`sidebar ${drawerOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
