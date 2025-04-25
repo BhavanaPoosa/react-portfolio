@@ -100,23 +100,25 @@
     .burger-btn {
       display: flex !important;
       position: fixed;
-      top: 10px;
-      left: 10px;
+      top: 12px;
+      left: 12px;
       width: 48px;
       height: 48px;
+      background: #1DB954;
       border: none;
       border-radius: 50%;
-      background: #1DB954;
-      color: #000;
-      font-size: 1.8rem;
       justify-content: center;
       align-items: center;
+  
+      /* Make the bars icon bigger and white for contrast */
+      font-size: 1.6rem;
+      color: #0d0d0d;
       z-index: 1000;
+      transition: transform 0.2s ease;
     }
-    
-    
+  
     .burger-btn:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
     
   
