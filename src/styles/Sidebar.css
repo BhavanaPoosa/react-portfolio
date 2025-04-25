@@ -98,25 +98,32 @@
     }
   
     .burger-btn {
-      display: flex !important;          /* ensure it’s visible */
+      display: flex !important;
       position: fixed;
       top: 12px;
       left: 12px;
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       background: #1DB954;
       border: none;
       border-radius: 50%;
       justify-content: center;
       align-items: center;
-      color: #fff !important;            /* white so you can see it */
-      font-size: 1.4rem !important;      /* tweak to taste */
+      font-size: 2rem;        /* base size for icon */
+      color: #fff !important;
       z-index: 1000;
       transition: transform 0.2s ease;
     }
     .burger-btn:hover {
       transform: scale(1.1);
     }
+  
+    /* force the SVG inside to fill more of that circle */
+    .burger-btn svg {
+      width: 1.2em !important;
+      height: 1.2em !important;
+    }
+  
     
   
     .sidebar .close-btn {
