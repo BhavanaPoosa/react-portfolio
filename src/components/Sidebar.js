@@ -1,8 +1,14 @@
+// src/components/Sidebar.js
 import React, { useState, useEffect } from 'react';
 import {
-  FaBars, FaTimes,
-  FaPaintBrush, FaEnvelope,
-  FaGithub, FaLinkedin, FaRoad, FaHeadphones
+  FaAngleRight,
+  FaAngleLeft,
+  FaPaintBrush,
+  FaEnvelope,
+  FaGithub,
+  FaLinkedin,
+  FaRoad,
+  FaHeadphones
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Sidebar.css';
@@ -14,21 +20,17 @@ const quotes = [
 ];
 
 export default function Sidebar() {
-  const navigate = useNavigate();
-  const [drawerOpen, setDrawer] = useState(false);
-  const [showContact, setModal] = useState(false);
-  const [quote, setQuote] = useState('');
+  const navigate               = useNavigate();
+  const [drawerOpen, setDrawer]  = useState(false);
+  const [showContact, setModal]  = useState(false);
+  const [quote, setQuote]        = useState('');
 
+  // prevent body scroll when drawer is open
   useEffect(() => {
-    if (drawerOpen) {
-      document.body.style.overflow = 'hidden';
-      document.body.classList.add('drawer-open');
-    } else {
-      document.body.style.overflow = 'auto';
-      document.body.classList.remove('drawer-open');
-    }
+    document.body.style.overflow = drawerOpen ? 'hidden' : 'auto';
   }, [drawerOpen]);
 
+  // pop sound for contact
   useEffect(() => {
     if (showContact) {
       const pop = new Audio('/bubble-pop-5-323639.mp3');
@@ -37,14 +39,12 @@ export default function Sidebar() {
     }
   }, [showContact]);
 
-  const toggleDrawer = () => setDrawer(!drawerOpen);
-  const closeDrawer = () => setDrawer(false);
-
+  const toggleDrawer = () => setDrawer(open => !open);
+  const closeDrawer  = () => setDrawer(false);
   const openContact = () => {
     setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
     setModal(true);
   };
-
   const go = (path, state) => {
     navigate(path, state ? { state } : undefined);
     closeDrawer();
@@ -52,33 +52,54 @@ export default function Sidebar() {
 
   return (
     <>
-      <button className="burger-btn" onClick={toggleDrawer} aria-label="Open menu">
-        <FaBars size={40} color='#fff'/>
+      {/* ─── Mobile drawer toggle arrow ─── */}
+      <button
+        className="burger-btn"
+        onClick={toggleDrawer}
+        aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
+      >
+        {drawerOpen
+          ? <FaAngleLeft size={24} color="#fff" />
+          : <FaAngleRight size={24} color="#fff" />
+        }
       </button>
+
+      {/* ─── Drawer ─── */}
       <aside className={`sidebar ${drawerOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
+          {/* still keep an explicit close icon inside if you like */}
           <button className="close-btn" onClick={closeDrawer} aria-label="Close menu">
-            <FaTimes />
+            <FaAngleLeft size={20} color="#fff" />
           </button>
           <button className="create-btn" onClick={openContact}>
             <FaEnvelope /> More
           </button>
         </div>
+
         <div className="filters">
           <button onClick={() => go('/developer')}>Developer</button>
           <button onClick={() => go('/artist')}>Artist</button>
           <button onClick={() => go('/individual')}>About</button>
         </div>
+
         <div className="sidebar-section">
           <h4>Quick Links</h4>
           <ul>
             <li onClick={() => go('/MyJourney')}><FaRoad /> My Journey</li>
-            <li onClick={() => go('/artist', { scrollTo: 'my-art' })}><FaPaintBrush /> Digital Art</li>
-            <li onClick={() => go('/individual', { scrollTo: 'music' })}><FaHeadphones /> Soundtrack</li>
+            <li onClick={() => go('/artist', { scrollTo: 'my-art' })}>
+              <FaPaintBrush /> Digital Art
+            </li>
+            <li onClick={() => go('/individual', { scrollTo: 'music' })}>
+              <FaHeadphones /> Soundtrack
+            </li>
           </ul>
         </div>
       </aside>
+
+      {/* backdrop */}
       {drawerOpen && <div className="backdrop" onClick={closeDrawer} />}
+
+      {/* contact modal */}
       {showContact && (
         <div className="modal-overlay" onClick={() => setModal(false)}>
           <div className="contact-modal" onClick={e => e.stopPropagation()}>
@@ -87,9 +108,11 @@ export default function Sidebar() {
             <p>Email: <a href="mailto:bhavana.3113@gmail.com">bhavana.3113@gmail.com</a></p>
             <p className="socials">
               <FaGithub /> <a href="https://github.com/BhavanaPoosa" target="_blank" rel="noopener noreferrer">GitHub</a><br/>
-              <FaLinkedin /> <a href="https://www.linkedin.com/in/bhavana-p-872011252/" target="_blank" rel="noopener noreferrer">LinkedIn</a><br/>
+              <FaLinkedin /> <a href="https://linkedin.com/in/bhavana" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </p>
-            <div className="quote"><span role="img" aria-label="speech balloon">💬</span> {quote}</div>
+            <div className="quote">
+              <span role="img" aria-label="speech balloon">💬</span> {quote}
+            </div>
           </div>
         </div>
       )}

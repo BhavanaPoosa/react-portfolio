@@ -102,8 +102,8 @@
       position: fixed;
       top: 12px;
       left: 12px;
-      width: 48px;
-      height: 48px;
+      width: 35px;
+      height: 35px;
       background: #1DB954;
       border: none;
       border-radius: 8px;
@@ -118,8 +118,8 @@
   
     /* ensure your FaBars / FaTimes SVG shows up in white */
     .burger-btn svg {
-      width: 24px !important;
-      height: 24px !important;
+      width: 20px !important;
+      height: 20px !important;
       fill: #fff !important;
     }
   
