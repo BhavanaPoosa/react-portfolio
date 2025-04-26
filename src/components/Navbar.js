@@ -1,57 +1,41 @@
 // src/components/Navbar.js
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { FaHome, FaSearch } from 'react-icons/fa';
+import { FaHome, FaSearch, FaBars, FaTimes, FaHeadphones, FaUserAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 
-/* ───────── SEARCH CATALOG ───────── */
 const searchItems = [
-  /* pages */
-  { type: 'page',    label: 'Developer',  path: '/developer' },
-  { type: 'page',    label: 'Artist',     path: '/artist' },
-  { type: 'page',    label: 'Individual', path: '/individual' },
-
-  /* misc */
-  { type: 'project', label: 'React Portfolio',        path: '/developer' },
-  { type: 'goal',    label: '2025 Vision Board',      path: '/individual' },
-  { type: 'resume',  label: 'Download Résumé',        path: '/resume.pdf' },
-  { type: 'page',    label: 'My Journey Timeline',    path: '/myjourney' },
-
-  { type: 'project', label: 'Text2Vision',            path: '/developer' },
-  { type: 'project', label: 'Portfolio Site',         path: '/developer' },
-
-  /* artwork */
-  { type: 'art', label: 'Autumn – Digital Art',       path: '/artist' },
-  { type: 'art', label: 'Forest Hut – Digital Art',   path: '/artist' },
-  // … (keep the rest of your art items here)
+  { type: 'page',    label: 'Developer',        path: '/developer' },
+  { type: 'page',    label: 'Artist',           path: '/artist' },
+  { type: 'page',    label: 'Individual',       path: '/individual' },
+  { type: 'project', label: 'React Portfolio',  path: '/developer' },
+  { type: 'goal',    label: '2025 Vision Board',path: '/individual' },
+  { type: 'resume',  label: 'Download Résumé',  path: '/resume.pdf' },
+  { type: 'page',    label: 'My Journey Timeline', path: '/myjourney' },
+  // …and any others you need
 ];
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isMusicOn, setIsMusicOn]   = useState(false);
+  const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
-  /* — state — */
-  const [showProfile, setShowProfile] = useState(false);
-  const [searchTerm,  setSearchTerm]  = useState('');
-  const [isMusicOn,   setIsMusicOn]   = useState(false);
-
-  /* background music */
   const audioRef = useRef(null);
   useEffect(() => {
     audioRef.current = new Audio('/Chill.mp3');
     audioRef.current.volume = 0.1;
   }, []);
 
-  /* performant live-search */
   const filteredItems = useMemo(() => {
     const term = searchTerm.trim().toLowerCase();
     if (!term) return [];
-    return searchItems.filter(i =>
-      i.label.toLowerCase().includes(term) ||
-      i.type.toLowerCase().includes(term)
+    return searchItems.filter(it =>
+      it.label.toLowerCase().includes(term) ||
+      it.type.toLowerCase().includes(term)
     );
   }, [searchTerm]);
 
-  /* handlers */
   const handleResultClick = (item) => {
     if (item.path.endsWith('.pdf')) {
       window.open(item.path, '_blank', 'noopener,noreferrer');
@@ -62,87 +46,88 @@ export default function Navbar() {
   };
 
   const toggleMusic = () => {
-    if (!audioRef.current) return;
-    isMusicOn ? audioRef.current.pause()
-              : audioRef.current.play().catch(()=>{});
-    setIsMusicOn(p => !p);
+    if (isMusicOn) audioRef.current.pause();
+    else          audioRef.current.play().catch(() => {});
+    setIsMusicOn(m => !m);
+    setShowBurgerMenu(false);
   };
 
-  /* scroll to About-Me (HomeContent) */
-  const goToAboutMe = () => {
+  const handleScrollToAboutMe = () => {
     navigate('/', { state: { scrollToAbout: true } });
+    setShowBurgerMenu(false);
   };
 
-  /* ───────── JSX ───────── */
   return (
-    <>
-      <header className="navbar">
-        {/* left */}
-        <div className="nav-left" onClick={() => navigate('/')}>
-          <FaHome size={24} />{"    "} Home
-          <span className="nav-home"></span>
-        </div>
+    <header className="navbar">
+      {/* ─── LEFT: logo + home */}
+      <div className="nav-left" onClick={() => navigate('/')}>
+        <FaHome size={24} />
+        <span className="nav-home">Home</span>
+      </div>
 
-        {/* center — search */}
-        <div className="nav-center">
-          <FaSearch className="search-icon" />
-          <input
-            type="text"
-            placeholder="Search…"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-
-          {searchTerm && (
-            <div className="search-dropdown">
-              {filteredItems.length ? (
-                filteredItems.map((item, idx) => (
+      {/* ─── CENTER: search */}
+      <div className="nav-center">
+        <FaSearch className="search-icon" />
+        <input
+          type="text"
+          placeholder="Search…"
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+        />
+        {searchTerm && (
+          <div className="search-dropdown">
+            {filteredItems.length
+              ? filteredItems.map((it, i) => (
                   <div
-                    key={idx}
+                    key={i}
                     className="dropdown-item"
-                    onClick={() => handleResultClick(item)}
+                    onClick={() => handleResultClick(it)}
                   >
-                    {item.label}
-                    <span className="dropdown-tag">{item.type}</span>
+                    {it.label}
+                    <span className="dropdown-tag">{it.type}</span>
                   </div>
                 ))
-              ) : (
-                <div className="dropdown-item">No results</div>
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* right */}
-        <div className="nav-right">
-          <button className="about-me-btn" onClick={goToAboutMe}>
-            About Me
-          </button>
-
-          <button className="music-toggle" onClick={toggleMusic}>
-            {isMusicOn ? 'Music On' : 'Music Off'}
-          </button>
-
-          <img
-            src="/Me.jpeg"
-            alt="Bhavana Poosa avatar"
-            className="avatar"
-            onClick={() => setShowProfile(true)}
-          />
-        </div>
-      </header>
-
-      {/* profile modal */}
-      {showProfile && (
-        <div className="profile-modal" onClick={() => setShowProfile(false)}>
-          <div
-            className="profile-modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img src="/Me.jpeg" alt="Bhavana Poosa" />
+              : <div className="dropdown-item">No results</div>
+            }
           </div>
+        )}
+      </div>
+
+      {/* ─── RIGHT: desktop buttons + mobile burger */}
+      <div className="nav-right">
+        <button className="music-toggle" onClick={toggleMusic}>
+          {isMusicOn ? 'Music On' : 'Music Off'}
+        </button>
+
+        <button className="about-me-btn" onClick={handleScrollToAboutMe}>
+          About Me
+        </button>
+
+        <button
+          className="burger-menu-btn"
+          onClick={() => setShowBurgerMenu(b => !b)}
+          aria-label="Toggle menu"
+        >
+          {showBurgerMenu
+            ? <FaTimes size={20} />
+            : <FaBars  size={20} />
+          }
+        </button>
+
+        <img src="/Me.jpeg" alt="Avatar" className="avatar" />
+      </div>
+
+      {/* ─── Mobile-only burger dropdown */}
+      {showBurgerMenu && (
+        <div className="burger-menu-dropdown">
+          <button onClick={toggleMusic}>
+            <FaHeadphones /> {isMusicOn ? 'Music Off' : 'Music On'}
+          </button>
+          <button onClick={handleScrollToAboutMe}>
+            <FaUserAlt /> About Me
+          </button>
         </div>
       )}
-    </>
+    </header>
   );
 }
