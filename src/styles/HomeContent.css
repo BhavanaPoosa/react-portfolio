@@ -1,29 +1,20 @@
 /* ─────────────────────────
-   DESKTOP ( ≥ 769 px )
-   your original styles
+   DESKTOP  ( ≥ 769 px )
    ───────────────────────── */
-
    .home-content{
     flex:1;
     padding:2rem;
     overflow-y:auto;
     color:#fff;
-    background:#181818;               /* keep brand black */
+    background:#181818;
   }
   
+  /* HERO */
   .hero{ margin-bottom:2rem; text-align:center; }
+  .hero-title   { font-size:3rem; color:#1db954;  animation:fadeIn 1s ease-out; }
+  .hero-subtitle{ font-size:1.5rem; color:#b3b3b3;animation:fadeIn 1.5s ease-out; }
   
-  .hero-title{
-    font-size:3rem;
-    color:#1db954;
-    animation:fadeIn 1s ease-out;
-  }
-  .hero-subtitle{
-    font-size:1.5rem;
-    color:#b3b3b3;
-    animation:fadeIn 1.5s ease-out;
-  }
-  
+  /* PREVIEW CARDS */
   .preview-cards{
     display:flex;
     gap:1.5rem;
@@ -46,6 +37,7 @@
     background:#282828;
   }
   
+  /* FEATURED */
   .featured-section{ margin-top:3rem; text-align:center; }
   
   .featured-tiles{
@@ -62,56 +54,69 @@
     min-width:200px;
     max-width:250px;
     text-align:left;
+    word-break:break-word;          /* 🔹 keep long text inside */
     animation:slideInUp .5s ease-in-out;
   }
   
-  /* animations */
-  .fade-in{ animation:fadeIn 1s ease forwards; }
-  .slide-in{ animation:slideInUp .6s ease forwards; }
+  /* Animations */
+  .fade-in  { animation:fadeIn   1s   ease forwards; }
+  .slide-in { animation:slideInUp .6s ease forwards; }
   
-  @keyframes fadeIn{
-    from{ opacity:0; transform:translateY(-10px); }
-    to  { opacity:1; transform:translateY(0); }
-  }
-  @keyframes slideInUp{
-    from{ opacity:0; transform:translateY(30px); }
-    to  { opacity:1; transform:translateY(0); }
-  }
+  @keyframes fadeIn   { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
+  @keyframes slideInUp{ from{opacity:0;transform:translateY(30px);}  to{opacity:1;transform:translateY(0);} }
   
   /* ─────────────────────────
-     MOBILE / TABLET ( ≤ 768 px )
-     responsive tweaks
+     MOBILE / TABLET  ( ≤ 768 px )
      ───────────────────────── */
-  
   @media (max-width:768px){
   
-    /* 1️⃣ tighter padding & spacing */
-    .home-content{ padding:1.5rem 1rem; }
-    .preview-cards{ margin:1.75rem 0; gap:1.25rem; }
+    /* spacing */
+    .home-content { padding:1.5rem 1rem; }
   
-    /* 2️⃣ hero text scales down */
-    .hero-title{ font-size:2.2rem; }
+    /* hero */
+    .hero-title   { font-size:2.2rem; }
     .hero-subtitle{ font-size:1.25rem; }
   
-    /* 3️⃣ preview cards stack vertically */
+    /* preview cards stack */
     .preview-cards{
       flex-direction:column;
       align-items:center;
+      gap:1.25rem;
+      margin:1.75rem 0;
     }
     .preview-card{
       width:100%;
-      max-width:340px;   /* look good on large phones */
+      max-width:340px;
       min-width:0;
     }
   
-    /* 4️⃣ featured tiles become single-column */
+    /* featured tiles: single column & wider */
     .featured-tiles{
       flex-direction:column;
       align-items:center;
+      gap:1rem;
     }
     .tile{
       width:100%;
       max-width:380px;
+      padding:1.25rem 1.5rem;
     }
+  
+    /* smaller text so it never overflows */
+    .tile p { font-size:0.95rem; line-height:1.45; }
+  }
+  
+  /* ─────────────────────────
+     EXTRA-SMALL  ( ≤ 480 px )
+     ───────────────────────── */
+  @media (max-width:480px){
+    .hero-title   { font-size:1.9rem; }
+    .hero-subtitle{ font-size:1.1rem; }
+  
+    .preview-card h3,
+    .tile h4      { font-size:1.1rem; }
+  
+    .preview-card p,
+    .tile p       { font-size:0.9rem; }
   }
   

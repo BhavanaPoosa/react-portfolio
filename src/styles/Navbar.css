@@ -1,7 +1,6 @@
 /* ───────────────────────────────
-   NAVBAR  –  DESKTOP / BASE
+   NAVBAR – DESKTOP / BASE
    ─────────────────────────────── */
-
    .navbar {
     display: flex;
     align-items: center;
@@ -10,7 +9,7 @@
     padding: 0 1rem;
     background: #000;
     color: #fff;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: "Helvetica Neue", sans-serif;
     cursor: pointer;
   }
   
@@ -116,7 +115,6 @@
     background: #1db954;
     color: #000;
   }
-  
   .music-toggle:hover {
     background: #1a8e3c;
   }
@@ -125,7 +123,6 @@
     background: #eefff4;
     color: #000;
   }
-  
   .about-me-btn:hover {
     background: #d2f5e0;
   }
@@ -138,6 +135,58 @@
     cursor: pointer;
   }
   
+  /* dropdown from burger */
+  .burger-menu-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 1rem;
+    background: #121212;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+  }
+  .burger-menu-dropdown button {
+    background: none;
+    border: none;
+    color: #fff;
+    text-align: left;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .burger-menu-dropdown button:hover {
+    background: #1db954;
+    color: #000;
+  }
+  
+  /* burger button itself */
+  .burger-menu-btn {
+    display: none;               /* desktop hide */
+    background: #1db954;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    .burger-menu-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+    }
+  }
+  
   .profile-modal {
     position: fixed;
     inset: 0;
@@ -147,7 +196,6 @@
     align-items: center;
     z-index: 1000;
   }
-  
   .profile-modal-content img {
     width: 300px;
     height: 300px;
@@ -157,143 +205,40 @@
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
     animation: zoomIn 0.3s ease-out;
   }
-  
   @keyframes zoomIn {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
+    from { transform: scale(0.8); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
   }
   
   /* ───────────────────────────────
-     NAVBAR  –  MOBILE / TABLET  ≤768px
+     MOBILE / TABLET ≤ 768 px
+     (overrides come last so they win)
      ─────────────────────────────── */
   @media (max-width: 768px) {
-    .navbar {
-      flex-wrap: wrap;
-      height: auto;
-      padding: 8px 14px;
-    }
+    /* keep bar on one row + leave 60 px blank left-most for sidebar toggle */
+    .navbar       { flex-wrap: nowrap; height: 60px; padding: 8px 14px 8px 60px; }
   
-    .nav-left,
-    .nav-right {
-      flex: 0 0 50%;
-    }
+    .nav-left     { flex: 0 0 auto; gap: 0.5rem; }
+    .nav-center   { flex: 1 1 auto; order: 0; margin: 0 0.5rem; }
+    .nav-right    { flex: 0 0 auto; gap: 0.5rem; flex-wrap: nowrap; margin-top: 0; }
   
-    .nav-left {
-      justify-content: flex-start;
-    }
+    /* let search input shrink instead of pushing row to wrap */
+    .nav-center input { min-width: 0; }
   
-    .nav-right {
-      flex: 0 0 100%;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 8px;
-    }
-  
-    .nav-home {
-      display: none;
-    }
-  
-    .nav-center {
-      order: 3;
-      flex: 1 1 100%;
-      margin-top: 10px;
-      padding: 0.5rem 0.75rem;
-    }
-  
-    .nav-center input {
-      font-size: 0.9rem;
-    }
-  
+    /* hide desktop-only buttons */
     .music-toggle,
-    .about-me-btn {
-      flex: 1 1 45%;
-      text-align: center;
-      justify-content: center;
-    }
+    .about-me-btn { display: none; }
   
+    /* slightly narrower search dropdown for small screens */
     .search-dropdown {
       width: 92%;
-      max-height: 180px;
-    }
-  
-    .avatar {
-      width: 36px;
-      height: 36px;
-      align-self: flex-end;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
   
-  /* Optional smaller screen layout (≤ 480px) */
+  /* Optional tweak for very narrow devices ≤480 px */
   @media (max-width: 480px) {
-    .nav-right {
-      flex-direction: column;
-      align-items: flex-end;
-    }
+    /* nothing extra: row already single-line */
   }
-
-  /* hide desktop buttons on mobile */
-@media (max-width: 768px) {
-  .music-toggle,
-  .about-me-btn {
-    display: none;
-  }
-}
-
-/* the burger icon button */
-.burger-menu-btn {
-  display: none; /* desktop hide */
-  background: #1db954;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 0.4rem;
-  margin-left: 0.5rem;
-  cursor: pointer;
-}
-@media (max-width: 768px) {
-  .burger-menu-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    font-size: 1.2rem;
-  }
-}
-
-/* dropdown that appears under the burger */
-.burger-menu-dropdown {
-  position: absolute;
-  top: 60px;
-  right: 1rem;
-  background: #121212;
-  border: 1px solid #333;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-}
-.burger-menu-dropdown button {
-  background: none;
-  border: none;
-  color: #fff;
-  text-align: left;
-  padding: 0.75rem 1.25rem;
-  font-size: 0.95rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.burger-menu-dropdown button:hover {
-  background: #1db954;
-  color: #000;
-}
+  

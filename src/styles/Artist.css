@@ -223,7 +223,19 @@
   font-weight: bold;
 }
 
+/* ─── reusable card wrapper (Spotify-ish) ─── */
+.card{
+  background:#121212;
+  border-radius:12px;
+  padding:24px 20px;
+  margin:0 auto 32px;
+  max-width:900px;
+  box-shadow:0 0 16px rgba(0,0,0,.45);
+}
 
-
-
-
+/* tweak gallery heading so it matches card headings */
+.artist-gallery h2{
+  color:#1DB954;
+  text-align:center;
+  margin:32px 0 18px;
+}
