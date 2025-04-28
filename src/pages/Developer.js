@@ -77,7 +77,7 @@ export default function Developer() {
           </div>
 
           <div className="intro-text">
-            <h1>💻 Developer</h1>
+            <h1><span role="img" aria-label="laptop">💻</span> Developer</h1>
             <p>
               I build reliable, modern web applications by blending technical
               expertise with creative problem-solving. My projects focus on
@@ -89,7 +89,7 @@ export default function Developer() {
 
         {/* ───── Tech stack ───── */}
         <section className="skills">
-          <h2>🧠 Tech Stack</h2>
+          <h2><span role="img" aria-label="brain">🧠</span> Tech Stack</h2>
           <div className="skills-grid">
             {[
               'Java',
@@ -149,7 +149,7 @@ export default function Developer() {
 
         {/* ───── Projects ───── */}
         <section className="projects">
-          <h2>🚀 Projects</h2>
+          <h2><span role="img" aria-label="rocket">🚀</span> Projects</h2>
           <div className="project-cards">
             {projects.map((p) => (
               <div key={p.title} className="project-card">
@@ -174,7 +174,7 @@ export default function Developer() {
 
         {/* ───── Timeline ───── */}
         <section className="timeline">
-          <h2>⏳ A Glimpse Into My Journey</h2>
+          <h2><span role="img" aria-label="hourglass">⏳</span> A Glimpse Into My Journey</h2>
           <VerticalTimeline>
             {timelineItems.map((it) => (
               <VerticalTimelineElement
@@ -197,7 +197,7 @@ export default function Developer() {
 
         {/* ───── Certifications ───── */}
         <section className="certifications">
-          <h2>💡 Certifications</h2>
+          <h2><span role="img" aria-label="light bulb">💡</span> Certifications</h2>
           <div className="certification-cards">
             {[
               {
@@ -252,7 +252,7 @@ export default function Developer() {
 
         {/* ───── Resume link ───── */}
         <section className="resume">
-          <h2>📄 Want to work with me?</h2>
+          <h2><span role="img" aria-label="document">📄</span> Want to work with me?</h2>
           <p>
             <a
               href="/BhavanaPoosa-resume.pdf"

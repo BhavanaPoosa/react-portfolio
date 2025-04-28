@@ -50,7 +50,7 @@ export default function Artist() {
     <main className="artist-page">
       {/* ── HEADER CARD ─────────────────── */}
       <section className="card artist-header">
-        <h1>🎨 Artist</h1>
+        <h1><span role="img" aria-label="artist palette">🎨</span> Artist</h1>
         <p>
           Explore my world of digital art and sketches—each piece reflects my creative spirit.
           I honed my skills as an active member of my college art club. While I rarely paint,
