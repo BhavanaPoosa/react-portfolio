@@ -91,15 +91,19 @@
     }
   
     /* featured tiles: single column & wider */
-    .featured-tiles{
-      flex-direction:column;
-      align-items:center;
-      gap:1rem;
+    .featured-tiles  {
+      grid-template-columns: 1fr;   /* still single column   */
+      max-width: none;              /* 🔑  no hard ceiling    */
+      width: 100%;                  /* full width            */
+      padding: 0;                   /* flush with content    */
     }
-    .tile{
-      width:100%;
-      max-width:380px;
-      padding:1.25rem 1.5rem;
+  
+    /* each tile now fills 100 % of the row */
+    .tile {
+      width: 100%;
+      max-width: none;              /* 🔑  allow shrink below 380px */
+      padding: 1.25rem 1.25rem;
+      overflow-wrap: anywhere;      /* wrap super-long words */
     }
   
     /* smaller text so it never overflows */
