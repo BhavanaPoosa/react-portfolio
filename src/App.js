@@ -7,12 +7,14 @@ import Developer from './pages/Developer';
 import Artist from './pages/Artist';
 import Individual from './pages/Individual';
 import MyJourney from './components/MyJourney';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="app">
+        <ScrollToTop/>
         <Navbar />
         <div className="body">
           <Sidebar />
