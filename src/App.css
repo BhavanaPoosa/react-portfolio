@@ -39,6 +39,7 @@
   }
 }
 .body {
+  padding-top: 60px;
   flex: 1;
   display: flex;
 }

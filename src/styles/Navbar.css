@@ -2,6 +2,11 @@
    NAVBAR – DESKTOP / BASE
    ─────────────────────────────── */
    .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -216,7 +221,18 @@
      ─────────────────────────────── */
   @media (max-width: 768px) {
     /* keep bar on one row + leave 60 px blank left-most for sidebar toggle */
-    .navbar       { flex-wrap: nowrap; height: 60px; padding: 8px 14px 8px 60px; }
+    .navbar{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 14px;     /* clean, even padding */
+      background: #000;
+      z-index: 999;
+      flex-wrap: nowrap;     /* stay on one row */
+    }
   
     .nav-left     { flex: 0 0 auto; gap: 0.5rem; }
     .nav-center { flex: 0 1 30%; max-width: 30%; order: 0; margin: 0 .5rem; }
