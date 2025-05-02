@@ -239,3 +239,12 @@
   text-align:center;
   margin:32px 0 18px;
 }
+
+/* ——— make GIF responsive on phones & small tablets ——— */
+@media (max-width: 768px) {
+  .insta-gif {
+    width: 100%;        /* fill the card but never overflow */
+    max-width: 90vw;    /* leave a little side-gutter */
+    height: auto;       /* keep aspect ratio */
+  }
+}
