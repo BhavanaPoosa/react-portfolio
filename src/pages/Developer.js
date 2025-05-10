@@ -42,12 +42,28 @@ const projects = [
 
 /* ——— Timeline items ——— */
 const timelineItems = [
-  { year: '7 months', company: 'FSD Technology', position: 'Software Developer' },
-  { year: '5 months', company: 'ESS Technology', position: 'SWE Trainee' },
+  { year: 'Feb 2024 - Present', company: 'Experian (Caspex)', position: 'Software Engineer' },
+  {
+    year: 'Apr 2022 - Jun 2024',
+    company: 'National Service Scheme',
+    position: 'Volunteer - National Service Scheme',
+  },
+  {
+    year: 'Jan 2022 - Jun 2024',
+    company: 'Aakarshan',
+    position: 'Core Member - Aakarshan',
+  },
   {
     year: '2020 - 2024',
     company: 'Keshav Memorial Institute of Technology',
     position: 'B.Tech CSE',
+    cgpa: 'Grade: 9.2'
+  },
+  {
+    year: 'Jul 2018 - May 2020',
+    company: 'FIITJEE',
+    position: 'Intermediate, MPC',
+    cgpa: "Grade: 9.67"
   },
 ];
 
@@ -85,6 +101,20 @@ export default function Developer() {
               front-end designs to scalable back-end solutions.
             </p>
           </div>
+        </section>
+
+        {/* ───── Resume link ───── */}
+        <section className="resume">
+          <h2><span role="img" aria-label="document">📄</span> Want to work with me?</h2>
+          <p>
+            <a
+              href="/BhavanaPoosa-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download My Resume
+            </a>
+          </p>
         </section>
 
         {/* ───── Tech stack ───── */}
@@ -190,6 +220,7 @@ export default function Developer() {
               >
                 <h3>{it.company}</h3>
                 <h4>{it.position}</h4>
+                <h4>{it.cgpa}</h4>
               </VerticalTimelineElement>
             ))}
           </VerticalTimeline>
@@ -250,19 +281,7 @@ export default function Developer() {
           </div>
         </section>
 
-        {/* ───── Resume link ───── */}
-        <section className="resume">
-          <h2><span role="img" aria-label="document">📄</span> Want to work with me?</h2>
-          <p>
-            <a
-              href="/BhavanaPoosa-resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Download My Resume
-            </a>
-          </p>
-        </section>
+        
       </main>
 
       {/* ───── Avatar pop-up modal ───── */}
