@@ -239,10 +239,16 @@ export default function Developer() {
                   'Validated expertise in building and deploying generative-AI solutions on Oracle Cloud.',
               },
               {
+                title: 'Google Analytics Certification',
+                url: 'https://skillshop.credential.net/2366244e-d54b-4a76-a43f-59bf9fa48251#acc.M3p8PQaL',
+                desc:
+                  'Ability to set up GA4, collect and analyze data, and leverage key reports to drive informed marketing decisions.',
+              },
+              {
                 title: 'DSA – Smart Interviews',
                 url: 'https://smartinterviews.in/certificate/ba9f459c',
                 desc:
-                  'Solved 180+ problems with optimal DS & algorithms solutions.',
+                  'Solved 150+ problems with optimal DS & algorithms solutions.',
               },
               {
                 title: 'Foundations of Cybersecurity (Coursera)',

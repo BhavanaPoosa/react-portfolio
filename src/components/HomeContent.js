@@ -47,6 +47,10 @@ export default function HomeContent() {
             <p><strong>Oracle GenAI Certified</strong> - Skilled in Large Language Models (LLMs), using OCI's Generative AI services, and building RAG-based chatbots.</p>
           </div>
           <div className="tile">
+            <h4>New Credential</h4>
+            <p><strong>Google Analytics Certified</strong> - Skilled in setting up GA4 properties, analyzing user data, and leveraging Google Analytics reports to drive effective marketing strategies.</p>
+          </div>
+          <div className="tile">
             <h4>Art Club Recognition</h4>
             <p>Runner-up in Aakarshan Art Challenge.</p>
           </div>
