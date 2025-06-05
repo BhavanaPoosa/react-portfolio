@@ -183,6 +183,37 @@
   background-color: #1aa34a;
 }
 
+.resume-btn-wrapper {
+  text-align: center;
+  margin-top: 1rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.resume-btn {
+  display: inline-block;
+  background-color: #1DB954;
+  color: #000;
+  font-weight: bold;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  max-width: 90%;
+  white-space: nowrap;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .resume-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    max-width: 100%;
+  }
+}
+
 
   
   @keyframes slideUp {

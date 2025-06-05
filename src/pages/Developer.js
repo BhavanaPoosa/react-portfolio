@@ -106,15 +106,17 @@ export default function Developer() {
         {/* ───── Resume link ───── */}
         <section className="resume-card">
           <h2><span role="img" aria-label="document">📄</span> Want to work with me?</h2>
-          <p>I’m actively open to new opportunities—here’s my resume if you’d like to know more!</p>
-          <a
-            className="resume-btn"
-            href="/BhavanaPoosa-resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-          Download My Resume
-          </a>
+          <p>I'm actively open to new opportunities—here's my resume if you'd like to know more!</p>
+          <div class="resume-btn-wrapper">
+            <a
+              className="resume-btn"
+              href="/BhavanaPoosa-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+            Download My Resume
+            </a>
+          </div>
         </section>
 
 
