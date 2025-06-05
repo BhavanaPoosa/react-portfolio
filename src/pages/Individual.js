@@ -33,6 +33,7 @@ export default function Individual() {
   const [currentFact, setCurrentFact] = useState(0);
   const [showMoments, setShowMoments] = useState(false);
   const [showMusic, setShowMusic] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(
@@ -52,20 +53,32 @@ export default function Individual() {
 
   return (
     <main className="individual-page">
-      <section id="about-me" className="about-section">
+      <section id="about-me" className="about-section section-card">
         <h2>About Me</h2>
-        <p>
-          Hi — I'm Bhavana : a full-stack developer who pairs clean code with
-          creative flair. By day I secure and scale web apps; after hours I'm
-          sketching, experimenting with nail-art, or scouting new cafés and
-          restaurants to feed both curiosity and appetite.
-        </p>
-        <p>
-          My mantra is <em>create with intent, deliver with impact</em>.
-          Whether I'm crushing 10K steps, refining a digital illustration, or
-          shipping fresh features, I bring energy, curiosity, and craftsmanship
-          to every project.
-        </p>
+        <div className="about-content">
+          <div
+              className="intro-photo-about"
+              tabIndex={0}
+              onClick={() => setShowProfile(true)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') setShowProfile(true);
+              }}
+            >
+              <img src="/Me1.jpeg" alt="Bhavana Poosa" loading="lazy" />
+          </div>
+          <p>
+            Hi - I'm Bhavana!.. A full-stack developer who pairs clean code with
+            creative flair. By day I secure and scale web apps; after hours I'm
+            sketching, experimenting with nail-art, or scouting new cafés and
+            restaurants to feed both curiosity and appetite. I'm also an unapologetic anime weeb with a love for Japanese culture — from Studio Ghibli vibes to sushi nights.
+          </p>
+          <p>
+            My mantra is <em>create with intent, deliver with impact</em>.
+            Whether I'm crushing 10K steps, refining a digital illustration, or
+            shipping fresh features, I bring energy, curiosity, and craftsmanship
+            to every project.
+          </p>
+        </div>
       </section>
 
       <section className="highlights">
@@ -221,6 +234,21 @@ export default function Individual() {
           </div>
         </div>
       </section>
+
+      {/* ───── Avatar pop-up modal ───── */}
+      {showProfile && (
+        <div
+          className="profile-modal"
+          onClick={() => setShowProfile(false)}
+        >
+          <div
+            className="profile-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img src="/AboutMe2.jpeg" alt="Large avatar" />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
