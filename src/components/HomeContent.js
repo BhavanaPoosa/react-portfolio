@@ -39,8 +39,8 @@ export default function HomeContent() {
         </h2>
         <div className="featured-tiles">
           <div className="tile">
-            <h4>Cloud Migration</h4>
-            <p>Contributed to legacy-to-cloud platform shift.</p>
+            <h4>New Credential</h4>
+            <p><strong>AWS Associate Solutions Architect</strong> - Skilled in designing and deploying secure, scalable, and fault-tolerant architectures on AWS Cloud.</p>
           </div>
           <div className="tile">
             <h4>New Credential</h4>
